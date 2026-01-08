@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Ye browser ko batata hai ki page kaise load kare -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Page ka title jo browser tab me dikhta hai -->
+    <title>Ultra Pro Max 3D Text Animator</title>
+
+    <!-- Google se fonts load kar rahe hain - ye alag alag style ke fonts hain -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&family=Bungee+Shade&family=Russo+One&family=Monoton&family=Press+Start+2P&family=Righteous&family=Bebas+Neue&family=Fredoka+One&family=Black+Ops+One&family=Creepster&family=Rubik+Mono+One&family=Permanent+Marker&display=swap"
+        rel="stylesheet">
+
+    <!-- Baad me CSS file yahan link karenge -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="black-bg">
+
+    <!-- TOP RIGHT corner me Hide/Show button -->
+    <button class="toggle-btn" id="toggleBtn">
+        <span>👁️</span> Hide Controls
+    </button>
+
+    <!-- Ye pura controls section hai jo hide/show hoga -->
+    <div class="controls-container" id="controlsContainer">
+
+        <!-- SECTION 1: Text Input aur Background Color -->
+        <div class="control-panel panel-1">
+            <h3 class="panel-title">📝 Text & Background</h3>
+            <div class="input-group">
+                <label>Type Your Text:</label>
+                <input type="text" id="textInput" placeholder="Enter text here..." value="JAANI LYRICAL 🚀">
+            </div>
+
+            <div class="button-group">
+                <button class="btn btn-black" onclick="changeBackground('black')">⚫ Black</button>
+                <button class="btn btn-green" onclick="changeBackground('green')">🟢 Green</button>
+                <button class="btn btn-blue" onclick="changeBackground('blue')">🔵 Blue</button>
+                <button class="btn btn-transparent" onclick="changeBackground('transparent')">◻️ Transparent</button>
+            </div>
+        </div>
+
+        <!-- SECTION 2: Font Style Dropdown -->
+        <div class="control-panel panel-2">
+            <h3 class="panel-title">🔤 Font Styles</h3>
+            <div class="dropdown-container">
+                <button class="dropdown-btn" id="fontDropdownBtn">
+                    Select Font Style ▼
+                </button>
+                <div class="dropdown-content" id="fontDropdown">
+                    <!-- Group 1: Futuristic Fonts -->
+                    <div class="dropdown-group">
+                        <span class="group-label">🚀 Futuristic</span>
+                        <button class="dropdown-item" onclick="changeFont('orbitron')">Orbitron</button>
+                        <button class="dropdown-item" onclick="changeFont('russo')">Russo One</button>
+                        <button class="dropdown-item" onclick="changeFont('press-start')">Press Start 2P</button>
+                        <button class="dropdown-item" onclick="changeFont('monoton')">Monoton</button>
+                        <button class="dropdown-item" onclick="changeFont('rubik')">Rubik Mono</button>
+                    </div>
+
+                    <!-- Group 2: Bold & Strong Fonts -->
+                    <div class="dropdown-group">
+                        <span class="group-label">💪 Bold & Strong</span>
+                        <button class="dropdown-item" onclick="changeFont('bebas')">Bebas Neue</button>
+                        <button class="dropdown-item" onclick="changeFont('righteous')">Righteous</button>
+                        <button class="dropdown-item" onclick="changeFont('black-ops')">Black Ops One</button>
+                        <button class="dropdown-item" onclick="changeFont('fredoka')">Fredoka One</button>
+                    </div>
+
+                    <!-- Group 3: Creative & Fun Fonts -->
+                    <div class="dropdown-group">
+                        <span class="group-label">🎨 Creative & Fun</span>
+                        <button class="dropdown-item" onclick="changeFont('bungee')">Bungee Shade</button>
+                        <button class="dropdown-item" onclick="changeFont('creepster')">Creepster</button>
+                        <button class="dropdown-item" onclick="changeFont('permanent')">Permanent Marker</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 3: Animation Effects Dropdown -->
+        <div class="control-panel panel-3">
+            <h3 class="panel-title">✨ Animation Effects</h3>
+            <div class="dropdown-container">
+                <button class="dropdown-btn" id="animDropdownBtn">
+                    Select Animation ▼
+                </button>
+                <div class="dropdown-content" id="animDropdown">
+                    <!-- Group 1: Cinematic 3D -->
+                    <div class="dropdown-group">
+                        <span class="group-label">🎬 Cinematic 3D</span>
+                        <button class="dropdown-item" onclick="changeAnimation('rotate')">Rotate 3D</button>
+                        <button class="dropdown-item" onclick="changeAnimation('flip')">Flip 3D</button>
+                        <button class="dropdown-item" onclick="changeAnimation('inout')">Depth Reveal</button>
+                        <button class="dropdown-item" onclick="changeAnimation('cinematic-zoom')">Cinematic
+                            Zoom</button>
+                        <button class="dropdown-item" onclick="changeAnimation('parallax-tilt')">Parallax Tilt</button>
+                        <button class="dropdown-item" onclick="changeAnimation('camera-orbit')">Camera Orbit</button>
+                    </div>
+
+                    <!-- Group 2: Glow & Light FX -->
+                    <div class="dropdown-group">
+                        <span class="group-label">✨ Glow & Light</span>
+                        <button class="dropdown-item" onclick="changeAnimation('neon')">Neon Glow</button>
+                        <button class="dropdown-item" onclick="changeAnimation('rainbow')">Rainbow Shift</button>
+                        <button class="dropdown-item" onclick="changeAnimation('fire')">Fire Glow</button>
+                        <button class="dropdown-item" onclick="changeAnimation('light-sweep')">Light Sweep</button>
+                        <button class="dropdown-item" onclick="changeAnimation('volumetric-light')">God Rays</button>
+                        <button class="dropdown-item" onclick="changeAnimation('hologram')">Hologram</button>
+                    </div>
+
+                    <!-- Group 3: Glitch & Digital -->
+                    <div class="dropdown-group">
+                        <span class="group-label">⚡ Glitch & Digital</span>
+                        <button class="dropdown-item" onclick="changeAnimation('glitch-rgb')">RGB Glitch</button>
+                        <button class="dropdown-item" onclick="changeAnimation('digital-rain')">Matrix Rain</button>
+                        <button class="dropdown-item" onclick="changeAnimation('scanline')">Scanline</button>
+                        <button class="dropdown-item" onclick="changeAnimation('cyber-pulse')">Cyber Pulse</button>
+                    </div>
+
+                    <!-- Group 4: Material FX -->
+                    <div class="dropdown-group">
+                        <span class="group-label">💎 Material Effects</span>
+                        <button class="dropdown-item" onclick="changeAnimation('glass-morph')">Glass Morph</button>
+                        <button class="dropdown-item" onclick="changeAnimation('chrome')">Chrome Metal</button>
+                        <button class="dropdown-item" onclick="changeAnimation('liquid')">Liquid Wave</button>
+                        <button class="dropdown-item" onclick="changeAnimation('jelly')">Jelly Bounce</button>
+                    </div>
+
+                    <!-- Group 5: Particle & Physics -->
+                    <div class="dropdown-group">
+                        <span class="group-label">🌟 Particles</span>
+                        <button class="dropdown-item" onclick="changeAnimation('particle-form')">Particle Form</button>
+                        <button class="dropdown-item" onclick="changeAnimation('smoke-reveal')">Smoke Reveal</button>
+                        <button class="dropdown-item" onclick="changeAnimation('shockwave')">Shockwave</button>
+                        <button class="dropdown-item" onclick="changeAnimation('motion-blur')">Motion Blur</button>
+                    </div>
+
+                    <!-- Group 6: Layered Depth -->
+                    <div class="dropdown-group">
+                        <span class="group-label">📐 Depth & Layers</span>
+                        <button class="dropdown-item" onclick="changeAnimation('shadow-clone')">Shadow Clone</button>
+                        <button class="dropdown-item" onclick="changeAnimation('depth-fog')">Depth Fog</button>
+                        <button class="dropdown-item" onclick="changeAnimation('layer-split')">Layer Split</button>
+                        <button class="dropdown-item" onclick="changeAnimation('stagger-letters')">Letter
+                            Cascade</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 4: Size Controls with +/- buttons -->
+        <div class="control-panel panel-4">
+            <h3 class="panel-title">📐 Size Controls</h3>
+
+            <!-- Font Size Control -->
+            <div class="control-row">
+                <label>Font Size:</label>
+                <div class="number-control">
+                    <button class="btn-minus" onclick="decreaseFontSize()">−</button>
+                    <input type="number" id="fontSizeInput" value="100" min="20" max="300" readonly>
+                    <button class="btn-plus" onclick="increaseFontSize()">+</button>
+                    <span class="unit">px</span>
+                </div>
+            </div>
+
+            <!-- Letter Spacing Control -->
+            <div class="control-row">
+                <label>Letter Spacing:</label>
+                <div class="number-control">
+                    <button class="btn-minus" onclick="decreaseLetterSpacing()">−</button>
+                    <input type="number" id="letterSpacingInput" value="10" min="0" max="50" readonly>
+                    <button class="btn-plus" onclick="increaseLetterSpacing()">+</button>
+                    <span class="unit">px</span>
+                </div>
+            </div>
+
+            <!-- Word Spacing Control -->
+            <div class="control-row">
+                <label>Word Spacing:</label>
+                <div class="number-control">
+                    <button class="btn-minus" onclick="decreaseWordSpacing()">−</button>
+                    <input type="number" id="wordSpacingInput" value="0" min="0" max="100" readonly>
+                    <button class="btn-plus" onclick="increaseWordSpacing()">+</button>
+                    <span class="unit">px</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 5: Color & Effects -->
+        <div class="control-panel panel-5">
+            <h3 class="panel-title">🎨 Color & Effects</h3>
+
+            <div class="control-row">
+                <label>Text Color:</label>
+                <input type="color" id="colorPicker" value="#00ff00">
+            </div>
+
+            <div class="control-row">
+                <label>Shadow Intensity:</label>
+                <div class="number-control">
+                    <button class="btn-minus" onclick="decreaseShadow()">−</button>
+                    <input type="number" id="shadowInput" value="50" min="0" max="100" readonly>
+                    <button class="btn-plus" onclick="increaseShadow()">+</button>
+                    <span class="unit">%</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 6: Animation Speed Control -->
+        <div class="control-panel panel-6">
+            <h3 class="panel-title">⚡ Animation Speed</h3>
+
+            <div class="control-row">
+                <label>Speed Control:</label>
+                <div class="number-control">
+                    <button class="btn-minus" onclick="decreaseSpeed()">−</button>
+                    <input type="number" id="speedInput" value="100" min="25" max="300" readonly>
+                    <button class="btn-plus" onclick="increaseSpeed()">+</button>
+                    <span class="unit">%</span>
+                </div>
+            </div>
+
+            <div class="speed-presets">
+                <button class="speed-btn" onclick="setSpeed(25)">🐌 Slow</button>
+                <button class="speed-btn" onclick="setSpeed(100)">⚡ Normal</button>
+                <button class="speed-btn" onclick="setSpeed(200)">🚀 Fast</button>
+                <button class="speed-btn" onclick="setSpeed(300)">💥 Ultra</button>
+            </div>
+        </div>
+
+        <!-- Animation Preview Box -->
+        <div class="preview-box">
+            <h4 class="preview-title">🎬 Animation Preview</h4>
+            <div class="preview-container">
+                <div class="preview-text" id="previewText">PREVIEW</div>
+            </div>
+            <p class="preview-note">👆 Current animation preview</p>
+        </div>
+
+    </div>
+
+    <!-- Main Display Area - Yahan 3D text dikhega -->
+    <div class="display-area">
+        <div class="text-wrapper">
+            <div class="text-3d" id="displayText">JAANI LYRICAL 🚀</div>
+        </div>
+    </div>
+
+    <!-- Bottom Download Button -->
+    <div class="download-section">
+        <button class="btn-download" onclick="downloadVideo()">
+            ⬇️ Download Video
+        </button>
+    </div>
+
+    <!-- Baad me JavaScript file yahan link karenge -->
+    <script src="script.js"></script>
+</body>
+
+</html>
